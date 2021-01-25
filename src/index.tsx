@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import * as React from 'react'
+import {} from 'react'
+import ReactDOM from 'react-dom'
+import { AuthCheck } from 'reactfire'
+import './index.css'
+import { AppProviders } from 'context'
+import { AuthenticatedApp } from 'authenticated-app'
+import { Login } from 'screens/login.screen'
+import 'firebase/auth'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppProviders>
+      <AuthCheck fallback={<Login />}>{<AuthenticatedApp />}</AuthCheck>
+    </AppProviders>
   </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  document.getElementById('root'),
+)
